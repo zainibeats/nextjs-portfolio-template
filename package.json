@@ -16,7 +16,7 @@
   "dependencies": {
     "@sendgrid/mail": "^8.1.4",
     "@types/matter-js": "^0.19.8",
-    "@vercel/node": "^2.3.0",
+    "@vercel/node": "^5.1.14",
     "esbuild": "^0.25.2",
     "lucide-react": "^0.344.0",
     "matter-js": "^0.20.0",
