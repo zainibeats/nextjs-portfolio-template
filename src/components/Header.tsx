@@ -137,8 +137,15 @@ export default function Header() {
    */
   const handleScrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // First close the menu to restore normal scrolling
     setIsMenuOpen(false);
+    
+    // Wait a small amount of time for the scroll position to be restored
+    // and the fixed positioning to be removed
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 10);
   };
 
   // Prevents body scrolling when mobile menu is open while avoiding layout shifts
