@@ -14,7 +14,7 @@ interface GalleryItem {
 
 // List of gallery items with their details
 const galleryItems: GalleryItem[] = [
-  { src: '/assets/images/project1.jpg', alt: 'Project Screenshot 1', type: 'image' },
+  { src: '/assets/images/UI.jpg', alt: 'Project Screenshot 1', type: 'image' },
   { 
     src: '/assets/videos/water_sim.mp4', 
     alt: 'Project Video 2', 
@@ -22,10 +22,10 @@ const galleryItems: GalleryItem[] = [
     posterSrc: '/assets/images/videoframe_3349.png' // Using the screenshot provided by the user
   },
   { src: '/assets/images/3drender.jpg', alt: 'Project Screenshot 3', type: 'image' },
-  { src: '/assets/images/blender.jpg', alt: 'Project Screenshot 4', type: 'image' },
+  { src: '/assets/images/codebase.jpg', alt: 'Project Screenshot 4', type: 'image' },
   { src: '/assets/images/firewall.jpg', alt: 'Project Screenshot 5', type: 'image' },
   { src: '/assets/images/homelab.jpg', alt: 'Code Screenshot 6', type: 'image' },
-  { src: '/assets/images/codebase.jpg', alt: 'Code Screenshot 7', type: 'image' },
+  { src: '/assets/images/stats.jpg', alt: 'Code Screenshot 7', type: 'image' },
   { src: '/assets/images/project-collage.jpg', alt: 'Project Screenshot 8', type: 'image' },
   { src: '/assets/images/project1.jpg', alt: 'Album Cover Screenshot 9', type: 'image' },
 ];
@@ -40,7 +40,7 @@ const skills = [
   {
     category: "Tools",
     icon: <Wrench className="w-6 h-6" />,
-    items: ["Linux", "VMWare", "AI Prompt Engineering", "SSH"]
+    items: ["Linux", "VMWare", "AI Prompt Engineering"]
   },
   {
     category: "Networking",
@@ -50,7 +50,7 @@ const skills = [
   {
     category: "Game Development",
     icon: <Gamepad2 className="w-6 h-6" />,
-    items: ["Godot & Unreal Engine", "Game & Level Design", "UI/UX"]
+    items: ["Unreal Engine", "Unity", "UI/UX"]
   },
 ];
 
