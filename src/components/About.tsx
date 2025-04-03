@@ -3,18 +3,37 @@
 import React, { useState } from 'react';
 import { Download } from 'lucide-react';
 
-// Main About component function
+/**
+ * About component - Personal information and resume section
+ * 
+ * Features:
+ * - Personal bio and professional summary
+ * - Resume download functionality
+ * - Alternative download option via popup
+ * - Modal image viewer (when applicable)
+ * - Smooth animations for visual appeal
+ */
 export default function About() {
+  // State for controlling popup visibility
   const [showPopup, setShowPopup] = useState(false);
+  
+  // Base64 encoded URL - Replace with your actual encoded resume URL
   const encodedUrl = "BASE64 ENCODED URL";
+  
+  // State for handling image viewing in modal (if applicable)
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  // Function to handle resume download click event
+  /**
+   * Handles resume download button click
+   * Shows popup with alternative download option
+   * Opens the resume in a new tab using decoded URL
+   */
   const handleResumeClick = (e: React.MouseEvent) => {
     e.preventDefault();
     setShowPopup(true);
-    setTimeout(() => setShowPopup(false), 10000);
+    setTimeout(() => setShowPopup(false), 10000); // Auto-hide popup after 10 seconds
     
+    // Decode and open the resume URL
     const decodedUrl = atob(encodedUrl);
     window.open(decodedUrl, '_blank', 'noopener,noreferrer');
   };
@@ -23,10 +42,13 @@ export default function About() {
   return (
     <section id="about" className="py-24 bg-gray-50 dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Section header */}
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
             About Me
           </h2>
+          
+          {/* Bio paragraphs - Replace with your actual information */}
           <div className="max-w-3xl mx-auto text-mid space-y-4">
             <p className="text-lg text-gray-600 dark:text-gray-300">
             Vestibulum aliquet luctus velit a ultrices. Suspendisse scelerisque mauris sed tellus cursus posuere. Ut aliquam massa tempor luctus malesuada. 
@@ -42,7 +64,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* Resume Download Section */}
+        {/* Resume download section with animation */}
         <div className="text-center animate-fade-in-up relative" style={{ animationDelay: '800ms' }}>
           <a
             href="#"
@@ -53,7 +75,7 @@ export default function About() {
             Download Resume
           </a>
 
-          {/* Popup notification */}
+          {/* Alternative download popup */}
           {showPopup && (
             <div className="fixed bottom-4 right-4 bg-white dark:bg-gray-800 rounded-lg shadow-xl p-4 max-w-sm animate-fade-in-up z-50">
               <p className="text-gray-800 dark:text-gray-200 mb-3">
@@ -77,6 +99,7 @@ export default function About() {
           )}
         </div>
 
+        {/* Image modal viewer - only appears when an image is selected */}
         {selectedImage && (
           <div 
             className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"

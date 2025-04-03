@@ -1,10 +1,22 @@
 import { Github, Mail, Home } from 'lucide-react';
 import React from 'react';
-import { FaSpotify, FaSoundcloud, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { FaSpotify, FaSoundcloud, FaYoutube, FaLinkedin } from 'react-icons/fa';
 
-// Main Footer component function
+/**
+ * Footer component for the portfolio website
+ * 
+ * Features:
+ * - Contact information and branding
+ * - Quick navigation links to page sections
+ * - Social media links with icons
+ * - Copyright information
+ * - Smooth scrolling functionality
+ */
 export default function Footer() {
-  // Function to handle smooth scrolling
+  /**
+   * Handles smooth scrolling to target sections
+   * Prevents default link behavior and uses smooth scrolling API
+   */
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const targetId = href.replace('#', '');
@@ -17,7 +29,15 @@ export default function Footer() {
     }
   };
 
-  // Define social links
+  /**
+   * Social media links configuration
+   * Each item requires:
+   * - name: Platform name for accessibility
+   * - href: URL to your social profile
+   * - icon: React component for the social icon
+   * 
+   * Note: Update these links with your actual profiles before deployment
+   */
   const socialLinks = [
     {
       name: 'GitHub',
@@ -40,9 +60,9 @@ export default function Footer() {
       icon: <FaSoundcloud className="h-5 w-5" />,
     },
     {
-      name: 'Instagram',
-      href: 'https://instagram.com/yourusername',
-      icon: <FaInstagram className="h-5 w-5" />,
+      name: 'LinkedIn',
+      href: 'https://linkedin.com/in/profile-id',
+      icon: <FaLinkedin className="h-5 w-5" />,
     },
     {
       name: 'Email',
@@ -51,11 +71,12 @@ export default function Footer() {
     },
   ];
 
-  // Render the footer with quick links and social connections
   return (
     <footer className="bg-gray-50 dark:bg-gray-800 py-12">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Footer content grid with responsive layout */}
         <div className="grid md:grid-cols-3 gap-8">
+          {/* Branding and title section */}
           <div>
             <h3 className="text-lg font-semibold mb-4">John Doe</h3>
             <p className="text-gray-600 dark:text-gray-300">
@@ -63,6 +84,7 @@ export default function Footer() {
             </p>
           </div>
           
+          {/* Quick navigation links section */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
@@ -93,6 +115,7 @@ export default function Footer() {
             </ul>
           </div>
           
+          {/* Social media links section */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Connect</h3>
             <div className="flex gap-4">
@@ -112,6 +135,7 @@ export default function Footer() {
           </div>
         </div>
         
+        {/* Copyright section */}
         <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700 text-center text-gray-600 dark:text-gray-300">
           <p>© {new Date().getFullYear()} John Doe. All rights reserved.</p>
         </div>

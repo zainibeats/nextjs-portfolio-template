@@ -3,11 +3,14 @@ import { Inter } from 'next/font/google'
 import '../styles/globals.css'
 import ClientLayout from '../components/ClientLayout'
 
+// Configure the Inter font with optimized loading strategy
 const inter = Inter({ 
   subsets: ['latin'],
-  display: 'swap', // Improve font loading performance
+  display: 'swap', // Improve font loading performance by showing fallback font until custom font loads
 })
 
+// Define metadata for SEO optimization and social sharing
+// Update these values with your own information for production use
 export const metadata: Metadata = {
   title: 'John Doe - Portfolio',
   description: 'Aliquam ornare vehicula lorem eget condimentum. Mauris eu lobortis magna. Donec faucibus risus id turpis posuere, sed tincidunt orci rhoncus.',
@@ -42,7 +45,14 @@ export const metadata: Metadata = {
   },
 }
 
-
+/**
+ * Root layout component that wraps all pages in the application.
+ * Sets up:
+ * - Document language
+ * - Responsive viewport configuration
+ * - Theme setup via ClientLayout component
+ * - Font application across the site
+ */
 export default function RootLayout({
   children,
 }: {

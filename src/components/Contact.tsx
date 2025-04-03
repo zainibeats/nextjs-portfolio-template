@@ -3,16 +3,35 @@
 import React, { useState } from 'react';
 import { Send, Mail, MapPin, Clock } from 'lucide-react';
 
+/**
+ * Contact component - User contact form and information
+ * 
+ * Features:
+ * - Form validation with required fields
+ * - Async form submission to API endpoint
+ * - Success/error state handling
+ * - Loading indicators during submission
+ * - Contact information display
+ * - Accessibility support with ARIA attributes
+ */
 export default function Contact() {
-  // Manage form state and submission status
+  // Form field state management
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
+  
+  // Track form submission status
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  // Handle form submissions with error handling and user feedback
+  /**
+   * Handles form submission with error handling
+   * Submits data to the contact API endpoint
+   * Updates UI based on submission result
+   * 
+   * @param e - Form submission event
+   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
@@ -28,6 +47,7 @@ export default function Contact() {
   
       if (!response.ok) throw new Error('Request failed');
       
+      // Reset form and show success message on successful submission
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
@@ -39,7 +59,7 @@ export default function Contact() {
   return (
     <section id="contact" className="py-24 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Inviting header for the contact section */}
+        {/* Section header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
             Get in Touch
@@ -50,7 +70,7 @@ export default function Contact() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
-          {/* Display contact information with clear icons */}
+          {/* Contact information sidebar */}
           <div>
             <div className="space-y-8">
               {/* Email contact info */}
@@ -86,7 +106,7 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Implement an accessible contact form with proper ARIA labels */}
+          {/* Contact form */}
           <form onSubmit={handleSubmit} className="space-y-6" aria-label="Contact form">
             {/* Name field */}
             <div>
@@ -150,7 +170,7 @@ export default function Contact() {
               {status === 'loading' ? 'Sending...' : 'Send Message'}
             </button>
 
-            {/* Success and error messages */}
+            {/* Form submission feedback messages */}
             {status === 'success' && (
               <p className="text-green-600 dark:text-green-400 text-center">
                 Message sent successfully!

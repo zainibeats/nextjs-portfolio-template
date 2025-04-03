@@ -2,11 +2,16 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { Menu, X, Github, Mail, Home } from 'lucide-react';
-import { FaSpotify, FaSoundcloud, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { FaSpotify, FaSoundcloud, FaYoutube, FaLinkedin } from 'react-icons/fa';
 import ThemeToggle from './ThemeToggle';
 import React from 'react';
 
-// Define navigation and social links
+/**
+ * Navigation items for the main menu
+ * Each item requires:
+ * - name: Display text for the link
+ * - href: Target section ID (with # prefix)
+ */
 const navigation = [
   { name: 'Development', href: '#development' },
   { name: 'Skills', href: '#skills' },
@@ -16,6 +21,15 @@ const navigation = [
   { name: 'Contact', href: '#contact' }
 ];
 
+/**
+ * Social media links configuration
+ * Each item requires:
+ * - name: Platform name for accessibility
+ * - href: URL to your social profile
+ * - icon: React component for the social icon
+ * 
+ * Note: Update these links with your actual profiles before deployment
+ */
 const socialLinks = [
   {
     name: 'GitHub',
@@ -38,9 +52,9 @@ const socialLinks = [
     icon: <FaSoundcloud className="h-5 w-5" />,
   },
   {
-    name: 'Instagram',
-    href: 'https://instagram.com/yourusername',
-    icon: <FaInstagram className="h-5 w-5" />,
+    name: 'LinkedIn',
+    href: 'https://linkedin.com/in/profile-id',
+    icon: <FaLinkedin className="h-5 w-5" />,
   },
   {
     name: 'Email',
@@ -49,12 +63,25 @@ const socialLinks = [
   },
 ];
 
-// Main Header component function
+/**
+ * Header component with responsive navigation
+ * 
+ * Features:
+ * - Fixed position header that stays visible while scrolling
+ * - Mobile-friendly hamburger menu with animations
+ * - Smooth scrolling to page sections
+ * - Social media links with proper accessibility
+ * - Dark mode toggle integration
+ * - Click outside and escape key handlers for menu
+ */
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // Function to handle smooth scrolling
+  /**
+   * Handles smooth scrolling to target sections
+   * Prevents default link behavior and uses smooth scrolling API
+   */
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const targetId = href.replace('#', '');
@@ -68,7 +95,7 @@ export default function Header() {
     }
   };
 
-  // Effect to handle clicks outside the menu
+  // Effect to handle clicks outside the menu to close it
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -85,7 +112,7 @@ export default function Header() {
     };
   }, [isMenuOpen]);
 
-  // Effect to handle the Escape key for closing the menu
+  // Effect to handle Escape key press to close the menu
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setIsMenuOpen(false);
@@ -95,34 +122,37 @@ export default function Header() {
     return () => window.removeEventListener('keydown', handleEscape);
   }, []);
 
-  // Function to toggle the theme
+  /**
+   * Toggles between light and dark theme
+   * Updates both the DOM class and localStorage preference
+   */
   const handleThemeToggle = () => {
     const newDark = !document.documentElement.classList.contains('dark');
     document.documentElement.classList.toggle('dark');
     localStorage.setItem('theme', newDark ? 'dark' : 'light');
   };
 
-  // Function to scroll to the top of the page
+  /**
+   * Scrolls back to the top of the page with smooth animation
+   */
   const handleScrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setIsMenuOpen(false);
   };
 
-  // Effect to lock scrolling when the menu is open
+  // Prevents body scrolling when mobile menu is open
   useEffect(() => {
     if (isMenuOpen) {
-      // Only lock body scrolling without affecting padding
+      // Lock body scrolling without affecting padding
       document.body.style.overflow = 'hidden';
-      
-      // No need to add padding-right as we've fixed the scrollbar in globals.css
     } else {
       // Restore scrolling when menu is closed
       document.body.style.overflow = '';
     }
 
     return () => {
-      // Cleanup
+      // Cleanup on unmount
       document.body.style.overflow = '';
     };
   }, [isMenuOpen]);
