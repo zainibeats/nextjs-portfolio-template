@@ -28,9 +28,6 @@ dist-ssr
 .cache
 .vscode/ipch
 
-# Test files
-ref/
-
 # Editor/IDE
 .idea
 .vscode
