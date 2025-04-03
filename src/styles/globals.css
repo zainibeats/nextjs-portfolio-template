@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  scroll-behavior: smooth;
+}
+
+/* Dark mode colors */
+[data-theme='dark'] {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+/* Prevent animations on page load */
+.no-animation * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Custom animation classes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Animation delays */
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+/* Grid pattern background */
+.bg-grid-pattern {
+  background-image: linear-gradient(to right, rgba(55, 65, 81, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(55, 65, 81, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Custom scrollbar - properly integrated with content */
+html {
+  overflow-y: auto;
+  margin-right: 0 !important; /* Prevent margin from being added */
+}
+
+body {
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  width: 100vw; /* Full viewport width */
+  position: relative; /* Set a positioning context */
+  max-width: 100%; /* Prevent overflow */
+}
+
+/* Thin custom scrollbar that overlays content */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Make track transparent to overlay content */
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(136, 136, 136, 0.5); /* Semi-transparent for overlay effect */
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(85, 85, 85, 0.7);
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(75, 85, 99, 0.5);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 114, 128, 0.7);
+} 
