@@ -2,6 +2,8 @@
 
 A modern, responsive portfolio website template built with Next.js 14, TypeScript, and Tailwind CSS. Features dark mode, smooth animations, and interactive components. Designed to be fully customizable to showcase your unique skills and projects. Optimized for SendGrid and Vercel for deployment, but can be adapted for other service providers. 
 
+<img src="assets/screenshot-1.jpg" width="635.5" height="272.5">
+
 ## Features
 
 - 🌓 Dark/Light mode with system preference detection
